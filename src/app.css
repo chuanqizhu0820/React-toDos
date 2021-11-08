@@ -1,0 +1,9 @@
+#item-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#de-btn{
+    margin-left:10px;
+}
