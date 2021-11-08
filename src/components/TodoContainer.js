@@ -26,6 +26,7 @@ class TodoContainer extends React.Component {
         }else{
             arr[e.target.id-1].completed = true;
         }
+        console.log(arr);
         this.setState({
             todos: arr
         })
@@ -108,8 +109,7 @@ class TodoContainer extends React.Component {
             </form>
             <ul>
                 {this.state.todos.map((item,idx,arr)=><li><div id="item-container">
-                    {item.completed ? <input type="checkbox" id={item.id} onChange={(e)=>this.handleStatusChange(e, arr)} checked/> 
-                                    : <input type="checkbox" id={item.id} onChange={(e)=>this.handleStatusChange(e, arr)} unchecked/>}
+                    {<input type="checkbox" id={item.id} onChange={(e)=>this.handleStatusChange(e, arr)} checked={item.completed} />}
                     {item.editting ? <form onSubmit={(e)=>{this.handleEditSubmit(e,idx)}} ><input name="editItem" value={this.state.editText} onChange={this.handleEdit}/></form> 
                                    : <p onDoubleClick={()=>this.changeEditStatus(idx)}>{item.title}</p> }
                 <button id="de-btn"className={item.id} onClick={(e)=>this.handleDelete(e)}>delete</button>
